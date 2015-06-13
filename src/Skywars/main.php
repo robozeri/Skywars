@@ -3,8 +3,12 @@
 namespace SkyWars;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
-class Main extends PluginBase implements Listener
+use pocketmine\utils\TextFormat;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\command\CommandExecutor;
+
+class Main extends PluginBase implements CommandExecutor
 {
  public $commands;
  public $arenaManager;
@@ -12,17 +16,34 @@ class Main extends PluginBase implements Listener
  public $setup;
  public $controller; 
  public $profileprovider;
-  
+  public function onLoad() 
+  {
+        $this->commands = new SkyWarsCommand ( $this );
+	$this->arenaManager = new SkyWarsManager ( $this );
+	$this->gameKit = new SkyWarsGameKit($this);
+	$this->setup = new SKyWarsSetup($this);
+	$this->profileprovider = new SKyWarsProvider ( $this );
+	
+  }
   public function onEnable
   {
-    public function onLoad() {
-		$this->commands = new SkyWarsCommand ( $this );
-		$this->arenaManager = new SkyWarsManager ( $this );
-		$this->gameKit = new SkyWarsGameKit($this);
-		$this->setup = new SKyWarsSetup($this);
-		$this->profileprovider = new SKyWarsProvider ( $this );
-	}
+  	$this->initConfigFile ();
+		$this->enabled = true;
+		$this->getServer ()->getPluginManager ()->registerEvents ( new SkyWarsWarsListener ( $this ), $this );
+		
+		$this->arenaManager->loadArenas ();
+		
+		$this->statueManager = new StatueManager( $this );
+		$this->statueManager->loadStatues ();
+		
+		if ($this->profileprovider != null) {
+			$this->profileprovider->initlize ();
+  	$this->initScheduler();
+		// $this->runDbtest();
+		$this->log ( TextFormat::GREEN . "- SKyWars Enable -" );
+  	
   }
+  
   public function onDisable
   {
     
