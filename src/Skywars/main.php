@@ -47,6 +47,6 @@ class Main extends PluginBase implements CommandExecutor
 		$this->commands->onCommand ( $sender, $command, $label, $args );
   public function onDisable
   {
-    
+                $this->log ( TextFormat::RED . "- SKyWars Disable -" ); 
   }
 }
