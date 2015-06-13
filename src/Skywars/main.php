@@ -8,6 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\CommandExecutor;
 use SkyWars\MiniGameBase;
+use SkyWars\SkyWarsCommand;
 @author robozeriandsvile
 class Main extends PluginBase implements CommandExecutor
 {
