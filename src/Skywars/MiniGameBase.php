@@ -1,32 +1,14 @@
 <?php
 
-namespace mcg76\game\turfwars;
+namespace SkyWars;
 
-use mcg76\game\turfwars\TurfWarsPlugIn;
-/**
- * MCPE TurfWarsPlugIn Minigame - Made by minecraftgenius76
- *
- * You're allowed to use for own usage only "as-is".
- * you're not allowed to republish or resell or for any commercial purpose.
- *
- * Thanks for your cooperate!
- *
- * Copyright (C) 2015 minecraftgenius76
- * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
- *
- * @author minecraftgenius76
- *
- */
-/**
- * MCG76 Mini-Game Base Class
- *
- */
+use SkyWars\main;
 
 abstract class MiniGameBase {		
 	protected $plugin;
-	public function __construct(TurfWarsPlugIn $plugin) {
+	public function __construct(SKyWarsPlugIn $plugin) {
 		if($plugin === null){
-			throw new \InvalidStateException("plugin may not be null");
+			throw new \InvalidStateException("");
 		}
 		$this->plugin = $plugin;
 	}
@@ -64,7 +46,7 @@ abstract class MiniGameBase {
 	}
 	
 	protected function getArenaManager() {
-		return $this->getPlugin()->arenaManager;
+		return $this->getPlugin()->worldManager;
 	}
 	protected function getConfig($key) {
 		return $this->plugin->getConfig()->get($key);
