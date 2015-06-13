@@ -39,7 +39,7 @@ class Main extends PluginBase implements CommandExecutor
 		if ($this->profileprovider != null) {
 			$this->profileprovider->initlize ();
   	$this->initScheduler();
-		// $this->runDbtest();
+		
 		$this->log ( TextFormat::GREEN . "- SKyWars Enable -" );
   	
   }
