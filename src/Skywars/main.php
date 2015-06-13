@@ -31,7 +31,7 @@ class Main extends PluginBase implements CommandExecutor
 		$this->enabled = true;
 		$this->getServer ()->getPluginManager ()->registerEvents ( new SkyWarsWarsListener ( $this ), $this );
 		
-		$this->arenaManager->loadArenas ();
+		$this->worldManager->loadworlds ();
 		
 		$this->statueManager = new StatueManager( $this );
 		$this->statueManager->loadStatues ();
@@ -59,7 +59,7 @@ class Main extends PluginBase implements CommandExecutor
 	private function initScheduler() {
 		// start count down to release them
 		$wait_time = 10 * $this->getServer ()->getTicksPerSecond ();
-		$arenaResetTask = new PlaySkyWarsWarsTask( $this );
+		$worldResetTask = new PlaySkyWarsWarsTask( $this );
 		$this->getServer ()->getScheduler ()->scheduleRepeatingTask ( $skywarsResetTask,60 );
 
 		$particleTask = new UpdatePlayerParticleTask($this);
