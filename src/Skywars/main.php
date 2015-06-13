@@ -19,7 +19,7 @@ class Main extends PluginBase implements CommandExecutor
   public function onLoad() 
   {
         $this->commands = new SkyWarsCommand ( $this );
-	$this->arenaManager = new SkyWarsManager ( $this );
+	$this->arenaManager = new SkyWarsArenaManager ( $this );
 	$this->gameKit = new SkyWarsGameKit($this);
 	$this->setup = new SKyWarsSetup($this);
 	$this->profileprovider = new SKyWarsProvider ( $this );
