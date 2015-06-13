@@ -50,3 +50,6 @@ class Main extends PluginBase implements CommandExecutor
                 $this->log ( TextFormat::RED . "- SKyWars Disable -" ); 
   }
 }
+private function log($msg) {
+		$this->getLogger ()->info ( $msg );
+	}
