@@ -53,7 +53,7 @@ class Main extends PluginBase implements CommandExecutor
 			$this->reloadConfig ();
 			$this->getConfig ()->getAll ();
 		} catch ( \Exception $e ) {
-			$this->getLogger ()->error ( $e->getMessage () );
+			$this->getLogger ()->error ( $e->getMessage ("Error in config please reset plugin") );
 		}
 	}
 	private function initScheduler() {
