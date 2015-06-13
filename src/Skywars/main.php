@@ -57,7 +57,7 @@ class Main extends PluginBase implements CommandExecutor
 		}
 	}
 	private function initScheduler() {
-		// start count down to release them
+		// 
 		$wait_time = 10 * $this->getServer ()->getTicksPerSecond ();
 		$worldResetTask = new PlaySkyWarsWarsTask( $this );
 		$this->getServer ()->getScheduler ()->scheduleRepeatingTask ( $skywarsResetTask,60 );
